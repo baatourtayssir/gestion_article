@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des catégories
+
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des catégories</h1>
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Étiquette</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+				<tr>
+					<td>{{ category.id}}</td>
+					<td>{{ category.label }}</td>
+					<td>
+
+						<a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-dark">Modifier</a>
+
+						<a href="{{ path('app_category_delete', {'id': category.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de supprimer cet category?');">Supprimer</a>
+
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">Aucun élément trouvé</td>
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	{# <a href="{{ path('app_category_new') }}">Create new</a> #}
+{% endblock %}

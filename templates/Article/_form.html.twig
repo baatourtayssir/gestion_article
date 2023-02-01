@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article
+
+{% endblock %}
+
+{% block body %}
+	<h1>Créer un nouvel article</h1>
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+
+	<button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+
+	<br>
+
+	{{ form_end(form) }}
+
+	<br>
+	<a href="{{ path('app_article_index') }}" class="btn btn-dark">Retour à la liste</a>
+
+{% endblock %}

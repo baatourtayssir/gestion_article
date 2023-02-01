@@ -1,0 +1,38 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Modifier Article
+
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier Article</h1>
+
+	{{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+	<br>
+	<a href="{{ path('app_article_index') }}" class="btn btn-dark">
+		retour à la liste</a>
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Article
+
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier Article</h1>
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+
+	<button class="btn btn-success">{{ button_label|default('Mettre à jour ') }}</button>
+
+
+	<br>
+
+	{{ form_end(form) }}
+
+	<br>
+	<a href="{{ path('app_article_index') }}" class="btn btn-dark">Retour à la liste</a>
+
+{% endblock %}

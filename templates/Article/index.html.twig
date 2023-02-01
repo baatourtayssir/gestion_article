@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des articles
+{% endblock %}
+
+{% block body %}
+	<h1>Articles</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Image</th>
+				<th>Description</th>
+				<th>Date</th>
+				<th>Catégorie</th>
+				<th colspan="2">Actions</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for article in articles %}
+				<tr>
+					<td>{{article.id}}</td>
+					<td>{{ article.Titre }}</td>
+					<td>
+						<img style="max-width:60px; text-align: center;" src=" {{vich_uploader_asset(article,'imageFile')}} ">
+
+
+					</td>
+
+					<td>{{ article.Description }}</td>
+					<td>{{ article.Date ? article.Date|date('Y-m-d') : '' }}</td>
+					<td>{{ article.category.label }}</td>
+
+					<td>
+						<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn btn-dark">Modifier</a>
+						<a href="{{ path('app_article_delete', {'id': article.id}) }}" class="btn btn-danger" onclick="return confirm('Etes-vous sûr de supprimer cet article?');">Supprimer</a>
+					</td>
+
+				</tr>
+			</td>
+		</tbody>
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="5">Aucun élément trouvé</td>
+
+	</tr>
+{% endfor %}</tbody></table>{# <a href="{{ path('app_article_new') }}">Create new</a> #}{% endblock %}{# <td><img style="max-width: 30%;" src="{{vich_uploader_asset(article,'imageFile')}}"></td> #}
